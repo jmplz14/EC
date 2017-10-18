@@ -13,7 +13,7 @@ lista: .irpc i,12345678
 longitud:
 	.int (.-lista)/4
 resultado:
-	.quad 0
+	.quad 0x0123456789ABCDEF
 formato:
 	.ascii "suma = %lld = %llx hex\n\0"	
 
@@ -30,7 +30,7 @@ main: .global main
 	push resultado 
 	push $formato
 	call printf
-	add $12, %esp
+	add $20, %esp
 
 	mov $1, %eax
 	mov $0, %ebx
@@ -39,7 +39,7 @@ suma:
 	
 	movl $0, %ebp
 	movl $0, %edi
-	movl $0, %edx
+	movl $0, %esi
 
 bucle:
 	movl (%ebx,%esi,4), %eax
@@ -49,8 +49,8 @@ bucle:
 	inc %esi
 	cmp %esi, %ecx
 	jne bucle
-	mov %edi, %eax
-	mov %ebp, %edx
+	movl %edi, %eax
+	movl %ebp, %edx
 	ret
 
 
