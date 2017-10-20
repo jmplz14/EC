@@ -1,16 +1,24 @@
 .section .data
 .macro linea 
-#	.int 1,1,1,1
-#	.int 2,2,2,2
-#	.int 1,2,3,4
 	.int -1,-1,-1,-1
+#	.int 0,-2,-1,-1
+#	.int 1,-2,-1,-1
+#	.int 0,-1,-1,-1
+#	.int 1,-2,1,-2
+#	.int 1,2,-3,-4
+#	.int 0x7FFFFFFF,0x7FFFFFFF,0x7FFFFFFF,0x7FFFFFFF
+#	.int 0x80000000,0x80000000,0x80000000,0x80000000
+#	.int 0x04000000,0x04000000,0x04000000,0x04000000
 #	.int 0x08000000,0x08000000,0x08000000,0x08000000
-#	.int 0x10000000,0x20000000,0x40000000,0x80000000
+#	.int 0xFC000000,0xFC000000,0xFC000000,0xFC000000
+#	.int 0xF0000000,0xE0000000,0xE0000000,0xD0000000
+#	.int 0xF8000000,0xF8000000,0xF8000000,0xF8000000
+#	.int 0xF0000000,0xE0000000,0xE0000000,0xD0000000
 .endm
 .macro linea0
-	.int 0,-1,1,1
+	.int 0,-2,-1,-1
 .endm	
-lista: linea#0
+lista: linea0
 	.irpc i,1234567#8
 		linea
 	.endr
